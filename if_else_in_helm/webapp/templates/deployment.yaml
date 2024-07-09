@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp
+  name: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webapp
+    spec:
+      containers:
+      {{- if eq .Values.environment "prod"}}
+      - image: webapp:prod
+      {{- else if eq .Values.environment "dev" }}
+      - image: webapp:dev
+      {{- else }}
+      - image: webapp:demo
+      {{- end }}
+        name: webapp
+        resources: {}
+status: {}

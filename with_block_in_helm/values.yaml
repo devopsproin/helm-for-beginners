@@ -1,0 +1,19 @@
+container:
+  name: webapp-container
+deployment:
+  name: webapp-deployment
+  replica: 2
+  image: 
+    repository: nginx
+    tag: 1.19
+  ports:
+    port1: 80
+    port2: 8080
+
+                    .
+                    |
+      ----------deployment-----------
+      |     |           |           |       
+    name  replica     image       ports  
+                      |   |     |     |   
+              repository tag  port1   port2 

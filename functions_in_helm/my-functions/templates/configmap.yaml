@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ required "Configmap name is required" .Values.name }}-configmap
+data:
+  myvalue: "Hello World"
+  drink: {{ .Values.drink | upper | quote }}
+  food: {{ .Values.food | title | quote }}
